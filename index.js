@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 var password="";
+const validPassword =["srinu","pavan","samba","Malleswari"];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/public/index.html');
@@ -15,7 +16,7 @@ app.get('/',(req,res)=>{
 
 app.post('/check',(req,res)=>{
    password = req.body.password;
-   if(password === "ILoveProgramming"){
+   if(validPassword.includes(password)){
        res.sendFile(__dirname+'/public/secret.html');
    } else {
        res.send("Invalid Password");
